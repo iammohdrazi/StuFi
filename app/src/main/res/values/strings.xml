@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name"> StuFi </string>
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="fill_details">Please fill the details to signUp</string>
+    <string name="passsword_empty">Password Should not be empty!</string>
+
+</resources>

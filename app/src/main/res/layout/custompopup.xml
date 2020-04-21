@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="330dp"
+    android:layout_height="525dp"
+    android:background="@color/white"
+    android:padding="5dp"
+    android:layout_gravity="center"
+    android:elevation="20dp">
+
+    <TextView
+        android:id="@+id/custompopup_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:textColor="@color/black"
+        android:text="X"
+        android:textStyle="bold"
+        android:layout_gravity="end"
+        android:gravity="center"
+        android:background="@drawable/circlebackground"
+        android:layout_margin="5dp"
+        />
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            app:lottie_fileName="custom.json"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            android:layout_marginStart="76dp"
+            />
+
+
+    <TextView
+        android:id="@+id/tv_student_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mohammad Razi"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_student_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MAU18UCS028"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        />
+
+    <TextView
+    android:id="@+id/tv_student_phone"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="9896852243"
+        android:textStyle="bold"
+    android:layout_gravity="center"
+    android:textColor="@color/black"
+    android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="16dp"
+    />
+
+    <TextView
+        android:id="@+id/tv_student_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Male"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
+        android:textSize="16dp"        />
+
+    <TextView
+        android:id="@+id/tv_student_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mohdrazi1456@gmail.com"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:textSize="16dp"        />
+    <TextView
+        android:id="@+id/tv_student_branch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="CSE"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
+        android:textSize="16dp"        />
+    <TextView
+        android:id="@+id/tv_student_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2nd Year"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
+        android:textSize="16dp"        />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="14dp"
+    android:layout_marginBottom="10dp"
+    android:orientation="horizontal"
+    >
+
+    <ImageView
+        android:id="@+id/student_popUp_message"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_speak_button"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="50dp" />
+
+    <ImageView
+        android:id="@+id/student_popUp_call"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_call_button"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginLeft="36dp"
+
+        />
+
+    <ImageView
+        android:id="@+id/student_popUp_email"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_gmail_button"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp" />
+
+
+</LinearLayout>
+
+</LinearLayout>

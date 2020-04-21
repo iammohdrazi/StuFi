@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.SignInActivity"
+    >
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        app:lottie_fileName="app.json"
+        app:lottie_loop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        app:lottie_autoPlay="true"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_login"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="E-mail"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+            android:padding="15dp"
+            android:textSize="15dp"
+            android:inputType="text"
+            android:fontFamily="sans-serif-condensed"            android:textAllCaps="false"
+            />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_login"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:hint="PassWord"
+            android:padding="15dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:textSize="15dp"
+            android:textAllCaps="false"
+            android:layout_marginBottom="30dp"
+            android:inputType="text"
+            android:password="true"
+            android:fontFamily="sans-serif-condensed"
+
+            />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/attempts_login"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/orange"
+            android:visibility="gone"
+            android:textAlignment="center"
+            />
+
+        <Button
+            android:id="@+id/btn_Submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/selector_button_bg"
+            android:text="Login"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="14dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-smallcaps"
+
+            />
+
+        <Button
+            android:id="@+id/sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/selector_button_bg"
+            android:text="sign up"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password ?"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:textColor="@color/black"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

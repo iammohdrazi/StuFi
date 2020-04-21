@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.AddStudent"
+    android:orientation="vertical"
+    android:layout_gravity="bottom"
+    >
+
+    <include layout="@layout/common_toolbar" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:lottie_fileName="editor.json"
+        app:lottie_loop="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        app:lottie_autoPlay="true"
+        android:layout_marginBottom="10dp"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edit_student_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="40dp"
+        android:inputType="text"
+        android:textStyle="bold"
+        />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edit_student_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:inputType="number"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RadioGroup
+        android:id="@+id/edit_radio_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/edit_radio_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginBottom="17dp"
+            android:textStyle="bold"
+            />
+
+        <RadioButton
+            android:id="@+id/edit_radio_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="17dp"
+            android:textStyle="bold"
+            />
+
+    </RadioGroup>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edit_student_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Student ID"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:inputType="textCapCharacters"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edit_student_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="E - Mail "
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:inputType="textEmailAddress"
+        android:textStyle="bold"
+        />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Spinner
+            android:id="@+id/edit_spinner_branch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="50dp"
+            android:textStyle="bold"
+            />
+
+        <Spinner
+            android:id="@+id/edit_spinner_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/update_student_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="14dp"
+            android:background="@color/bluelight"
+            android:text="UPDATE"
+            android:textColor="#ffff"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>

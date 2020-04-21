@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "838891138487",
+    "firebase_url": "https://jibble-ffd5f.firebaseio.com",
+    "project_id": "jibble-ffd5f",
+    "storage_bucket": "jibble-ffd5f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838891138487:android:b5e2cb0bc80fa4c8cccc32",
+        "android_client_info": {
+          "package_name": "com.zaph.loginsignupdesign"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838891138487-1a706pck846hbuc9l1g0ojituf1860ae.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zaph.loginsignupdesign",
+            "certificate_hash": "d9331ac0018cf9b32d60dd40ea21ff088d446cb8"
+          }
+        },
+        {
+          "client_id": "838891138487-j6v3ruvbk4p43ir3mva8npo8nj89dq8h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtvdvUWLG9VAIq4TFly9Y19yJkZL9uyzo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838891138487-j6v3ruvbk4p43ir3mva8npo8nj89dq8h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

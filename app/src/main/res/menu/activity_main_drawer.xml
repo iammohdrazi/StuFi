@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_students"
+            android:icon="@drawable/ic_students_nav"
+            android:title="Events"
+            android:iconTint="@color/black"
+            />
+        <item
+            android:id="@+id/nav_assignment"
+            android:icon="@drawable/ic_notes_nav"
+            android:title="Notes"
+            android:iconTint="@color/black"/>
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="Settings"
+            android:iconTint="@color/black"/>
+        <item
+            android:id="@+id/nav_sync"
+            android:icon="@drawable/ic_fileupload_nav"
+            android:title="Upload"
+            android:iconTint="@color/black"/>
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_send_nav"
+                android:checkable="true"
+                android:title="Share"
+                android:iconTint="@color/black"/>
+            <item
+                android:id="@+id/nav_chat"
+                android:icon="@drawable/ic_chat_nav"
+                android:checkable="true"
+                android:title="Chat"
+                android:iconTint="@color/black"/>
+            <item
+                android:id="@+id/nav_feedback"
+                android:icon="@drawable/ic_feedback_nav"
+                android:checkable="true"
+                android:title="Feedback"
+                android:iconTint="@color/black"/>
+
+        </menu>
+    </item>
+
+</menu>
