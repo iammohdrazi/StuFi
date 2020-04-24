@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,35 +21,46 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.zaph.loginsignupdesign.R;
+import com.zaph.loginsignupdesign.api.ApiClient;
+import com.zaph.loginsignupdesign.firebase.FirebaseHelper;
+import com.zaph.loginsignupdesign.models.Event;
+import com.zaph.loginsignupdesign.api.ApiInterface;
 import com.zaph.loginsignupdesign.models.Student;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.zaph.loginsignupdesign.ui.AddStudent;
 import com.zaph.loginsignupdesign.ui.DatabaseHelperClass;
 import com.zaph.loginsignupdesign.ui.MainAdapter;
+import com.zaph.loginsignupdesign.utils.ProgressDialog;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.app.Activity.RESULT_OK;
-import static com.zaph.loginsignupdesign.ui.DatabaseHelperClass.*;
 
 
 public class StudentsFragment extends Fragment {
 
 
     private ArrayList<Student> phoneList = new ArrayList();
+    private ArrayList<Event> eventList = new ArrayList();
     private MainAdapter mainAdapter;
     private RecyclerView recyclerView;
     private FloatingActionButton fab;
     private ImageView studentEditor;
-    private DatabaseHelperClass myDb ;
+    private DatabaseHelperClass myDb;
     private Dialog myDialog;
     private TextView txtClose;
     private TextView studentName;
@@ -81,49 +93,9 @@ public class StudentsFragment extends Fragment {
         recyclerView = (RecyclerView) root.findViewById(R.id.recyclerView);
         myDb = new DatabaseHelperClass(getActivity()); // dataBase constructor is calling here
         setUpRecycler(root);
-        /*bottomAppBar = root.findViewById(R.id.toolbar);*/
-        /*searchStudent = root.findViewById(R.id.search_student);
-        searchIcon = root.findViewById(R.id.search_menu_icon);
-        bottomAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.menu_search:
-                        break;
-                    case R.id.menu_notes:
-                        Intent intent = new Intent(getActivity(), Note.class);
-                        startActivity(intent);
-                        break;
-                    default:
-                        Toast.makeText(getActivity(), "Touch Again", Toast.LENGTH_SHORT).show();
-                }
-                return false;
-            }
-        });*/
-        /*tvToolbarHeading = root.findViewById(R.id.tvToolbarHeading);
-        tvToolbarHeading.setText("Students");
-        tvToolbarHeading.setVisibility(View.VISIBLE);*/
-
-       /* mFirestore.collection("events").document("hostDetails").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
-                    DocumentSnapshot documentSnapshot = task.getResult();
-                    if(documentSnapshot.exists() && documentSnapshot !=null){
-                        String hostname = documentSnapshot.getString("name");
-                    }
-                } else {
-                    Log.d(FIRE_LOG,"Error : "+ task.getException().getMessage());
-                }
-            }
-        });
-
-        //continousely retriving data say realTime
-
-*/
+        getEvents();
         noData = root.findViewById(R.id.noStudents);
         noStudents = root.findViewById(R.id.textNoStudentsAdded);
-        getStudentData();
         checkIfEmpty();
         return root;
     }
@@ -134,128 +106,37 @@ public class StudentsFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        mainAdapter=new MainAdapter(getActivity(),this,phoneList);
+        mainAdapter = new MainAdapter(getActivity(), this, eventList);
         recyclerView.setAdapter(mainAdapter);
 
-        fab = (FloatingActionButton)view.findViewById(R.id.add_fab);
+        fab = (FloatingActionButton) view.findViewById(R.id.add_fab);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddStudent.class);
-                startActivityForResult(intent,101);
+                startActivityForResult(intent, 101);
             }
         });
-
-    }
-
-    public void getStudentData(){
-        Cursor res = myDb.getAllData();
-
-        mFirestore = FirebaseFirestore.getInstance();
-        mFirestore.collection("events").document("hostDetails").addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@javax.annotation.Nullable DocumentSnapshot documentSnapshot, @javax.annotation.Nullable FirebaseFirestoreException e) {
-
-                if(documentSnapshot.exists() && documentSnapshot !=null){
-                    phoneList.add(
-                            new Student(
-                                    documentSnapshot.getString("name"),
-                                    documentSnapshot.getString("phone"),
-                                    documentSnapshot.getString("gender"),
-                                    documentSnapshot.getString("studentid"),
-                                    documentSnapshot.getString("email"),
-                                    documentSnapshot.getString("course"),
-                                    documentSnapshot.getString("year"),
-                                    documentSnapshot.getString("eventname"),
-                                    documentSnapshot.getString("eventcategory"),
-                                    documentSnapshot.getString("eventvenue"),
-                                    documentSnapshot.getString("eventfee"),
-                                    documentSnapshot.getString("eventpayment"),
-                                    documentSnapshot.getString("joiningcriteria")
-                            )
-                    );
-
-                }
-            }
-        });
-
-       /* mFirestore.collection("events").document("hostDetails").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
-                    DocumentSnapshot documentSnapshot = task.getResult();
-                    if(documentSnapshot.exists() && documentSnapshot !=null){
-                        phoneList.add(
-                                new Student(
-                                        documentSnapshot.getString("name"),
-                                        documentSnapshot.getString("phone"),
-                                        documentSnapshot.getString("gender"),
-                                        documentSnapshot.getString("studentid"),
-                                        documentSnapshot.getString("email"),
-                                        documentSnapshot.getString("course"),
-                                        documentSnapshot.getString("year")
-                                )
-                        );
-
-                    }
-                } else {
-                    Log.d(FIRE_LOG,"Error : "+ task.getException().getMessage());
-                }
-            }
-        });
-*/
-        /*if(res.getCount() == 0){
-
-            //Error Message
-
-            return;
-        }*/
-
-        /*StringBuffer buffer = new StringBuffer();
-        while(res.moveToNext()){
-            phoneList.add(
-                    new Student(
-                            res.getString(res.getColumnIndex(COL_NAME)),
-                            res.getString(res.getColumnIndex(COL_PHONE)),
-                            res.getString(res.getColumnIndex(COL_GENDER)),
-                            res.getString(res.getColumnIndex(COL_ID)),
-                            res.getString(res.getColumnIndex(COL_EMAIL)),
-                            res.getString(res.getColumnIndex(COL_BRANCH)),
-                            res.getString(res.getColumnIndex(COL_YEAR)),
-                            res.getString(res.getColumnIndex(COL_ATTENDANCE))
-                    )
-            );
-
-        }*/
-
-        mainAdapter.notifyDataSetChanged();
-        checkIfEmpty();
 
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 101){
-            if(resultCode == RESULT_OK){
-                Student student=(Student) data.getSerializableExtra("data");
-                phoneList.add(student);
-                mainAdapter.notifyDataSetChanged();
-                checkIfEmpty();
+        if (requestCode == 101) {
+            if (resultCode == RESULT_OK) {
+               getEvents();
             }
-        }else if(requestCode == 202){
-            if(resultCode == RESULT_OK){
-                //(TODO) Refresh Code Here
-                phoneList.clear();
-                checkIfEmpty();
-                getStudentData();
+        } else if (requestCode == 202) {
+            if (resultCode == RESULT_OK) {
+                getEvents();
             }
         }
     }
 
 
-    public void showPopup(String name, String id, final String phone, String gender, final String email, String branch, String year){
+    public void showPopup(String name, String id, final String phone, String gender, final String email, String branch, String year) {
         myDialog = new Dialog(getActivity());
         myDialog.setContentView(R.layout.custompopup);
 
@@ -307,9 +188,9 @@ public class StudentsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String number = extractNumber(phone);
-                Uri telnumber = Uri.parse("smsto:"+number);
-                Intent opensms = new Intent(Intent.ACTION_SENDTO,telnumber);
-                startActivity(Intent.createChooser(opensms,"Send message Using"));
+                Uri telnumber = Uri.parse("smsto:" + number);
+                Intent opensms = new Intent(Intent.ACTION_SENDTO, telnumber);
+                startActivity(Intent.createChooser(opensms, "Send message Using"));
             }
         });
 
@@ -319,36 +200,61 @@ public class StudentsFragment extends Fragment {
             public void onClick(View v) {
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
                 emailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                String uriText = "mailto:" + Uri.encode(email)+
-                        "?subject="+Uri.encode("Dear Student")+
+                String uriText = "mailto:" + Uri.encode(email) +
+                        "?subject=" + Uri.encode("Dear Student") +
                         "&body=" + Uri.encode("Here's an information Regarding -> ");
                 emailIntent.setData(Uri.parse(uriText));
-                startActivity(Intent.createChooser(emailIntent,"Send Mail via"));
+                startActivity(Intent.createChooser(emailIntent, "Send Mail via"));
             }
         });
     }
 
-    private static String extractNumber(String phone){
+    private static String extractNumber(String phone) {
 
-        return phone.replaceAll(" ","")
-                .replaceAll("\\(","")
-                .replace(")","")
-                .replace("-","");
+        return phone.replaceAll(" ", "")
+                .replaceAll("\\(", "")
+                .replace(")", "")
+                .replace("-", "");
     }
 
-private void checkIfEmpty(){
+    private void checkIfEmpty() {
 
-        if(phoneList.size() > 0 ){
+        if (eventList.size() > 0) {
             recyclerView.setVisibility(View.VISIBLE);
             noData.setVisibility(View.GONE);
             noStudents.setVisibility(View.GONE);
-        }
-        else{
+        } else {
             recyclerView.setVisibility(View.GONE);
             noData.setVisibility(View.VISIBLE);
             noStudents.setVisibility(View.VISIBLE);
         }
 
-}
+    }
+
+
+    private void getEvents() {
+
+        ProgressDialog.show(getActivity());
+        HashMap<String, String> map = new HashMap<>();
+        map.put("userId", FirebaseHelper.getUser().getUid());
+
+        ApiClient.getClient().getEventByUser(map).enqueue(new Callback<List<Event>>() {
+            @Override
+            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+                if (response.isSuccessful()) {
+                    eventList = (ArrayList<Event>) response.body();
+                    Log.i("DATA", eventList + "");
+                    mainAdapter.setData(eventList);
+                    ProgressDialog.dismiss();
+                    checkIfEmpty();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Event>> call, Throwable t) {
+                ProgressDialog.dismiss();
+            }
+        });
+    }
 
 }

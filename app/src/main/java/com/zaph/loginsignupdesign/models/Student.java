@@ -20,8 +20,25 @@ public class Student implements Serializable {
     private String eventfee;
     private String eventpayment;
     private String joiningcriteria;
+    private String eventprize;
+    private String eventdescription;
 
-    public Student(String name, String phone, String gender, String _id, String email, String branch, String year, String attendance,String eventname,String eventcategory,String eventvenue,String eventfee,String eventpayment,String joiningcriteria) {
+    public Student(String name,
+                   String phone,
+                   String gender,
+                   String _id,
+                   String email,
+                   String branch,
+                   String year,
+                   String attendance,
+                   String eventname,
+                   String eventcategory,
+                   String eventvenue,
+                   String eventfee,
+                   String eventpayment,
+                   String joiningcriteria,
+                   String eventprize,
+                   String eventdescription) {
         this.name = name;
         this.phone = phone;
         this.gender = gender;
@@ -36,9 +53,25 @@ public class Student implements Serializable {
         this.eventfee = eventfee;
         this.eventpayment = eventpayment;
         this.joiningcriteria = joiningcriteria;
+        this.eventprize = eventprize;
+        this.eventdescription = eventdescription;
     }
 
-    public Student(String name, String phone, String gender, String studentid, String email, String course, String year, String eventname, String eventvenue, String category,String eventfee,String eventpayment,String joiningcriteria) {
+    public Student(String name,
+                   String phone,
+                   String gender,
+                   String studentid,
+                   String email,
+                   String course,
+                   String year,
+                   String eventname,
+                   String eventvenue,
+                   String category,
+                   String eventfee,
+                   String eventpayment,
+                   String joiningcriteria,
+                   String eventprize,
+                   String eventdescription) {
 
     }
 
@@ -156,5 +189,21 @@ public class Student implements Serializable {
 
     public void setJoiningcriteria(String joiningcriteria) {
         this.joiningcriteria = joiningcriteria;
+    }
+
+    public String getEventprize() {
+        return eventprize;
+    }
+
+    public void setEventprize(String eventprize) {
+        this.eventprize = eventprize;
+    }
+
+    public String getEventdescription() {
+        return eventdescription;
+    }
+
+    public void setEventdescription(String eventdescription) {
+        this.eventdescription = eventdescription;
     }
 }

@@ -76,7 +76,7 @@
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:text="Host Name"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="5dp"
                 />
 
@@ -106,12 +106,11 @@
 
             <EditText
                 android:id="@+id/ethostphone"
-                android:inputType="text"
+                android:inputType="phone"
                 android:hint="Host phone number only"
                 android:background="@drawable/compileselected"
                 android:textColorHint="#B5B5B5"
                 android:textColor="#131E69"
-                android:maxLength="9"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginBottom="19dp"
@@ -171,43 +170,16 @@
 
             <EditText
                 android:id="@+id/ethostid"
-                android:inputType="text"
+                android:inputType="textCapCharacters"
                 android:hint="MAU18EEES003"
                 android:background="@drawable/compileselected"
                 android:textColorHint="#B5B5B5"
                 android:textColor="#131E69"
-                android:maxLength="9"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:paddingStart="5dp"
                 android:layout_marginBottom="10dp"
                 />
-
-           <!-- <TextView
-                android:id="@+id/tvdescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:text="Description"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="5dp"
-                />
-
-            <EditText
-                android:id="@+id/etdescription"
-                android:hint=" Fill Up Details here !"
-                android:background="@drawable/compileselected"
-                android:textColorHint="#B5B5B5"
-                android:textColor="#131E69"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:maxLines="7"
-                android:gravity="top|left"
-                android:paddingStart="5dp"
-                android:padding="8dp"
-                android:layout_marginBottom="16dp"
-                />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -264,12 +236,11 @@
 
             <EditText
                 android:id="@+id/ethostemail"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:hint="Host's Email ID only ->"
                 android:background="@drawable/compileselected"
                 android:textColorHint="#B5B5B5"
                 android:textColor="#131E69"
-                android:maxLength="9"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginBottom="5dp"
@@ -295,7 +266,6 @@
                 android:background="@drawable/compileselected"
                 android:textColorHint="#B5B5B5"
                 android:textColor="#131E69"
-                android:maxLength="9"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginBottom="19dp"
@@ -316,7 +286,7 @@
                     android:layout_centerHorizontal="true"
                     android:textAlignment="center"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="30dp"
                     android:background="@drawable/compileselected"
                     android:paddingStart="5dp"
                     android:paddingBottom="5dp"
@@ -348,7 +318,6 @@
                 android:background="@drawable/compileselected"
                 android:textColorHint="#B5B5B5"
                 android:textColor="#131E69"
-                android:maxLength="9"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:paddingStart="5dp"
@@ -374,7 +343,6 @@
                 android:background="@drawable/compileselected"
                 android:textColorHint="#B5B5B5"
                 android:textColor="#131E69"
-                android:maxLength="9"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginBottom="10dp"
@@ -400,7 +368,6 @@
                 android:background="@drawable/compileselected"
                 android:textColorHint="#B5B5B5"
                 android:textColor="#131E69"
-                android:maxLength="9"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginBottom="19dp"
@@ -425,6 +392,7 @@
                     android:paddingTop="5dp"
                     android:paddingEnd="5dp"
                     android:textStyle="bold"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="13dp"
                     android:layout_marginBottom="20dp"
                     />
@@ -452,7 +420,7 @@
                     android:id="@+id/dateselector"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="26 Apr 2020"
+                    android:text="11 Jan 2019"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:layout_marginStart="44dp"
@@ -487,7 +455,7 @@
                     android:id="@+id/timeselector"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2 : 46 AM"
+                    android:text="1 : 11 AM"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:layout_marginStart="60dp"
@@ -502,6 +470,76 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tveventprize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:text="Event Prize"
+                android:maxLength="30"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                />
+
+            <EditText
+                android:id="@+id/eteventprize"
+                android:inputType="text"
+                android:hint="Enter the prize of event"
+                android:background="@drawable/compileselected"
+                android:textColorHint="#B5B5B5"
+                android:textColor="#131E69"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginBottom="19dp"
+                android:paddingStart="5dp"
+                />
+
+             <TextView
+               android:id="@+id/tveventdescription"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textSize="18sp"
+               android:textColor="@color/black"
+               android:text="Description"
+               android:layout_marginTop="3dp"
+               android:layout_marginBottom="5dp"
+               />
+
+           <EditText
+               android:id="@+id/eteventdescription"
+               android:hint="Fill up all the details associated with your event..."
+               android:background="@drawable/compileselected"
+               android:textColorHint="#B5B5B5"
+               android:textColor="#131E69"
+               android:layout_width="match_parent"
+               android:layout_height="140dp"
+               android:gravity="top|left"
+               android:paddingStart="5dp"
+               android:padding="8dp"
+               android:layout_marginBottom="16dp"
+               />
+
+            <TextView
+                android:id="@+id/tveventimage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:text="Upload Banner (*suggeted to pick a horizontal image)"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="5dp"
+                />
+
+            <ImageView
+                android:id="@+id/eteventimage"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="170dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/ic_image_event"
+                />
+
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -515,8 +553,8 @@
             android:layout_marginRight="20dp"
             android:text="Confirm"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="60dp"
             android:textSize="15sp"
             />
 

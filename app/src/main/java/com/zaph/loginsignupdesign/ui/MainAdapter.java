@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaph.loginsignupdesign.R;
+import com.zaph.loginsignupdesign.models.Event;
 import com.zaph.loginsignupdesign.models.Student;
 import com.zaph.loginsignupdesign.ui.students.StudentsFragment;
 
@@ -25,16 +26,21 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private DatabaseHelperClass myDb;
 
-    private ArrayList<Student> phoneList = new ArrayList();
+    private ArrayList<Event> eventList = new ArrayList();
     private Activity activity;
     private Fragment context;
 
-    public MainAdapter(Activity activity,Fragment context, ArrayList<Student> phoneList){
-        this.phoneList = phoneList;
+    public MainAdapter(Activity activity,Fragment context, ArrayList<Event> phoneList){
+        this.eventList = phoneList;
         this.context=context;
         this.activity=activity;
     }
 
+    public void setData(ArrayList<Event> eventList){
+        this.eventList.clear();
+        this.eventList.addAll(eventList);
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
@@ -48,38 +54,40 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         MainViewHolder mainViewHolder=(MainViewHolder) holder;
-        mainViewHolder.tvMain1.setText(phoneList.get(position).getName());
-        mainViewHolder.tvMain2.setText(phoneList.get(position).get_id());
+        mainViewHolder.tvMain1.setText(eventList.get(position).getEventname());
+        mainViewHolder.tvMain2.setText(eventList.get(position).getEventdescription());
 
-        mainViewHolder.studentDetail.setOnClickListener(new View.OnClickListener() {
+       /* mainViewHolder.studentDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                // ((MainActivity) context).showMessage(phoneList.get(position).getName(),phoneList.get(position).get_id(),phoneList.get(position).getPhone(),phoneList.get(position).getGender(),phoneList.get(position).getEmail(),phoneList.get(position).getBranch(),phoneList.get(position).getYear());
 
                 ((StudentsFragment) context).showPopup(
-                        phoneList.get(position).getName(),
-                        phoneList.get(position).get_id(),
-                        phoneList.get(position).getPhone(),
-                        phoneList.get(position).getGender(),
-                        phoneList.get(position).getEmail(),
-                        phoneList.get(position).getBranch(),
-                        phoneList.get(position).getYear());
+                        eventList.get(position).getEventname(),
+                        eventList.get(position).getEventcategory(),
+                        eventList.get(position).getEventprize(),
+                        eventList.get(position).getEventdate(),
+                        eventList.get(position).getEventvenue(),
+                        eventList.get(position).getEventfee(),
+                        eventList.get(position).getHostcourse());
             }
-        });
+        });*/
 
         mainViewHolder.studentEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity,StudentEditor.class);
-                intent.putExtra("data2",phoneList.get(position));
+                intent.putExtra("data2",eventList.get(position));
                 context.startActivityForResult(intent,202);
             }
         });
+
+
     }
 
     @Override
     public int getItemCount() {
-        return phoneList.size();
+        return eventList.size();
     }
 
 

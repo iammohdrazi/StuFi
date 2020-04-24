@@ -1,181 +1,563 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AddStudent"
-    android:orientation="vertical"
-    android:layout_gravity="bottom"
+    android:fillViewport="true"
     >
 
-    <include layout="@layout/common_toolbar" />
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        app:lottie_fileName="editor.json"
-        app:lottie_loop="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        app:lottie_autoPlay="true"
-        android:layout_marginBottom="10dp"
-        />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        >
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edit_student_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Name"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="40dp"
-        android:inputType="text"
-        android:textStyle="bold"
-        />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        >
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edit_student_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Phone"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:inputType="number"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <RadioGroup
-        android:id="@+id/edit_radio_gender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/edit_radio_male"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Male"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="80dp"
-            android:layout_marginBottom="17dp"
-            android:textStyle="bold"
-            />
-
-        <RadioButton
-            android:id="@+id/edit_radio_female"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Female"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="17dp"
-            android:textStyle="bold"
-            />
-
-    </RadioGroup>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        >
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edit_student_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Student ID"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:inputType="textCapCharacters"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        >
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edit_student_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="E - Mail "
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="20dp"
-        android:inputType="textEmailAddress"
-        android:textStyle="bold"
-        />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <Spinner
-            android:id="@+id/edit_spinner_branch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:textAlignment="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="50dp"
-            android:textStyle="bold"
-            />
-
-        <Spinner
-            android:id="@+id/edit_spinner_year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:textAlignment="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:textStyle="bold"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:background="#131E69"
+            android:layout_height="196dp"
+            >
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_back"
+                android:layout_margin="10dp"
+                />
+            <TextView
+                android:id="@+id/edttitlepage"
+                android:layout_marginTop="10dp"
+                android:textSize="27sp"
+                android:layout_marginBottom="28dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="Event Editor"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#131E69"
+                />
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_marginTop="-53dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="22dp"
+            android:paddingTop="22dp"
+            app:cardCornerRadius="10dp"
+            android:orientation="vertical"
+            app:cardElevation="20dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/tvhostname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="Host Name"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:id="@+id/edthostname"
+                    android:inputType="text"
+                    android:hint="Ross Geller"
+                    android:background="@drawable/compileselected"
+                    android:textColorHint="#B5B5B5"
+                    android:textColor="#131E69"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:paddingStart="5dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tvhostphone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="Phone Number"
+                    android:maxLength="30"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:id="@+id/edthostphone"
+                    android:inputType="phone"
+                    android:hint="Host phone number only"
+                    android:background="@drawable/compileselected"
+                    android:textColorHint="#B5B5B5"
+                    android:textColor="#131E69"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="19dp"
+                    android:paddingStart="5dp"
+                    />
+
+                <RadioGroup
+                    android:id="@+id/event_editor_radio_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:text="Gender :"
+                        android:layout_marginTop="20dp"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/event_editor_radio_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Male"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginBottom="17dp"
+                        android:textStyle="bold"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/event_editor_radio_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="17dp"
+                        android:textStyle="bold"
+                        />
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/tvhostid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="Host ID"
+                    android:maxLength="30"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:id="@+id/edthostid"
+                    android:inputType="textCapCharacters"
+                    android:hint="MAU18EEES003"
+                    android:background="@drawable/compileselected"
+                    android:textColorHint="#B5B5B5"
+                    android:textColor="#131E69"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:paddingStart="5dp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <Spinner
+                        android:id="@+id/editeventspinnerbranch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textAlignment="center"
+                        android:background="@drawable/compileselected"
+                        android:paddingStart="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="16dp"
+                        />
+
+                    <Spinner
+                        android:id="@+id/editeventspinneryear"
+                        android:layout_marginStart="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textAlignment="center"
+                        android:layout_marginBottom="16dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/compileselected"
+                        android:paddingStart="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="5dp"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvhostemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="Host E- Mail"
+                    android:maxLength="30"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:id="@+id/edthostemail"
+                    android:inputType="textEmailAddress"
+                    android:hint="Host's Email ID only ->"
+                    android:background="@drawable/compileselected"
+                    android:textColorHint="#B5B5B5"
+                    android:textColor="#131E69"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingStart="5dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tveventname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="Name of the EVENT"
+                    android:maxLength="30"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:id="@+id/edteventname"
+                    android:inputType="text"
+                    android:hint="xymphony 2K20"
+                    android:background="@drawable/compileselected"
+                    android:textColorHint="#B5B5B5"
+                    android:textColor="#131E69"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="19dp"
+                    android:paddingStart="5dp"
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <Spinner
+                        android:id="@+id/edtspinnereventcategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textAlignment="center"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/compileselected"
+                        android:paddingStart="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="5dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginBottom="20dp"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvvenue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="Venue of Event"
+                    android:maxLength="30"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:id="@+id/edtvenue"
+                    android:inputType="text"
+                    android:hint="ex - class or area"
+                    android:background="@drawable/compileselected"
+                    android:textColorHint="#B5B5B5"
+                    android:textColor="#131E69"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:paddingStart="5dp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tveventfee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="Entry Fee"
+                    android:maxLength="30"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:id="@+id/edteventfee"
+                    android:inputType="text"
+                    android:hint="ex - 0 Rs or 30 Rs"
+                    android:background="@drawable/compileselected"
+                    android:textColorHint="#B5B5B5"
+                    android:textColor="#131E69"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="10dp"
+                    android:paddingStart="5dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tvpayment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="Payment Method"
+                    android:maxLength="30"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:id="@+id/edtpayment"
+                    android:inputType="text"
+                    android:hint="Enter your UPI Id or phone no."
+                    android:background="@drawable/compileselected"
+                    android:textColorHint="#B5B5B5"
+                    android:textColor="#131E69"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="19dp"
+                    android:paddingStart="5dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <Spinner
+                        android:id="@+id/edtspinnerjoiningcriteria"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/compileselected"
+                        android:paddingStart="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="5dp"
+                        android:textStyle="bold"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginBottom="20dp"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvdateselector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:text="Select Date :"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/edtdateselector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="26 Apr 2020"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginStart="44dp"
+                        android:paddingStart="3dp"
+                        android:paddingEnd="3dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:background="@drawable/compileselected"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvtimeselector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:text="Timing :"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/edttimeselector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2 : 46 AM"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginStart="60dp"
+                        android:paddingStart="3dp"
+                        android:paddingEnd="3dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:background="@drawable/compileselected"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tveventprize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="Event Prize"
+                    android:maxLength="30"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:id="@+id/edteventprize"
+                    android:inputType="text"
+                    android:hint="Enter the prize of event"
+                    android:background="@drawable/compileselected"
+                    android:textColorHint="#B5B5B5"
+                    android:textColor="#131E69"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="19dp"
+                    android:paddingStart="5dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tveventdescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="Description"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:id="@+id/edteventdescription"
+                    android:hint="Fill up all the details associated with your event..."
+                    android:background="@drawable/compileselected"
+                    android:textColorHint="#B5B5B5"
+                    android:textColor="#131E69"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:gravity="top|left"
+                    android:paddingStart="5dp"
+                    android:padding="8dp"
+                    android:layout_marginBottom="16dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tveventimage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="Upload Banner (*suggeted to pick a horizontal image)"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/edteventimage"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="170dp"
+                    android:layout_marginBottom="20dp"
+                    android:src="@drawable/ic_image_event"
+                    />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <Button
-            android:id="@+id/update_student_button"
+            android:id="@+id/editevent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:background="@drawable/password_reset"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Edit "
             android:layout_gravity="bottom"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="14dp"
-            android:background="@color/bluelight"
-            android:text="UPDATE"
-            android:textColor="#ffff"
-            android:textStyle="bold" />
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="60dp"
+            android:textSize="15sp"
+            />
 
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
