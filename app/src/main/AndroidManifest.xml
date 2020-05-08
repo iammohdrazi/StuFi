@@ -12,10 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditTaskDesk"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".NewTaskActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.QrCode"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity
+            android:name=".EditTaskDesk"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NewTaskActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.ForgotPassword"
             android:screenOrientation="portrait" />

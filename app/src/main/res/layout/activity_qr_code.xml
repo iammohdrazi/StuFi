@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.QrCode"
+    android:orientation="vertical"
+    android:background="@color/black"
+    >
+
+    <ImageView
+        android:id="@+id/qrback"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:src="@drawable/ic_back"
+        android:padding="12dp"
+        />
+
+    <ImageView
+        android:id="@+id/eventqrcode"
+        android:layout_width="270dp"
+        android:layout_height="270dp"
+        android:src="@drawable/ic_qr_code"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:id="@+id/tvqrcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventqrcode"
+        android:layout_marginTop="34dp"
+        android:text="Scan the QR code above"
+        android:textSize="24dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        />
+
+</RelativeLayout>

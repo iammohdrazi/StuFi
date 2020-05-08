@@ -10,5 +10,6 @@
     <color name="orange">#FFA500</color>
     <color name="darkorange">#FF8C00</color>
     <color name="grey">#808080</color>
+    <color name="red">#FF4130</color>
 
 </resources>

@@ -10,13 +10,14 @@ import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -51,6 +52,7 @@ import com.zaph.loginsignupdesign.NewTaskActivity;
 import com.zaph.loginsignupdesign.R;
 import com.zaph.loginsignupdesign.TimePickerFragment;
 import com.zaph.loginsignupdesign.Upload;
+import com.zaph.loginsignupdesign.firebase.FirebaseHelper;
 import com.zaph.loginsignupdesign.models.Student;
 import com.zaph.loginsignupdesign.ui.DatabaseHelperClass;
 import com.zaph.loginsignupdesign.utils.ProgressDialog;
@@ -82,9 +84,26 @@ public class AddStudent extends AppCompatActivity implements DatePickerDialog.On
     private FirebaseAuth mAuth;
     private ImageView eventImage;
 
+    private TextView titlepage;
+    private TextView tv1;
+    private TextView tv2;
+    private TextView tv3;
+    private TextView tv4;
+    private TextView tv5;
+    private TextView tv6;
+    private TextView tv7;
+    private TextView tv8;
+    private TextView tv9;
+    private TextView tv10;
+    private TextView tv11;
+    private TextView tv12;
+    private TextView tv13;
+    private TextView tv14;
+
     String currentDateString = "";
     String am_pm = "";
     String timings;
+    String image;
 
     int SELECT_PHOTO = 1;
      Uri uri;
@@ -139,6 +158,42 @@ public class AddStudent extends AppCompatActivity implements DatePickerDialog.On
         eventPrize = findViewById(R.id.eteventprize);
         eventDescription = findViewById(R.id.eteventdescription);
         eventImage = findViewById(R.id.eteventimage);
+
+        titlepage = findViewById(R.id.titlepage);
+        tv1 = findViewById(R.id.tvhostname);
+        tv2 = findViewById(R.id.tvhostphone);
+        tv3 = findViewById(R.id.tvhostgender);
+        tv4 = findViewById(R.id.tvhostid);
+        tv5 = findViewById(R.id.tvhostemail);
+        tv6 = findViewById(R.id.tveventname);
+        tv7 = findViewById(R.id.tvvenue);
+        tv8 = findViewById(R.id.tveventfee);
+        tv9 = findViewById(R.id.tvpayment);
+        tv10 = findViewById(R.id.tvdateselector);
+        tv11 = findViewById(R.id.tvtimeselector);
+        tv12 = findViewById(R.id.tveventprize);
+        tv13 = findViewById(R.id.tveventdescription);
+        tv14 = findViewById(R.id.tveventimage);
+
+        //import Font
+        Typeface MLight = Typeface.createFromAsset(getAssets(),"fonts/regular.ttf");
+        Typeface MMedium = Typeface.createFromAsset(getAssets(),"fonts/light.ttf");
+
+        titlepage.setTypeface(MMedium);
+        tv1.setTypeface(MLight);
+        tv2.setTypeface(MLight);
+        tv3.setTypeface(MLight);
+        tv4.setTypeface(MLight);
+        tv5.setTypeface(MLight);
+        tv6.setTypeface(MLight);
+        tv7.setTypeface(MLight);
+        tv8.setTypeface(MLight);
+        tv9.setTypeface(MLight);
+        tv10.setTypeface(MLight);
+        tv11.setTypeface(MLight);
+        tv12.setTypeface(MLight);
+        tv13.setTypeface(MLight);
+        tv14.setTypeface(MLight);
 
         hostBranch = (Spinner) findViewById(R.id.neweventspinnerbranch);
         hostYear = (Spinner) findViewById(R.id.neweventspinneryear);
@@ -200,7 +255,6 @@ public class AddStudent extends AppCompatActivity implements DatePickerDialog.On
             public void onClick(View v) {
                 int selectedId = radioGenderGroup.getCheckedRadioButtonId();
                 radioGenderButton = (RadioButton) findViewById(selectedId);
-                ProgressDialog.show(AddStudent.this);
                 if(!validation(hostName.getText().toString(),
                         hostPhone.getText().toString(),
                         hostId.getText().toString(),
@@ -211,9 +265,9 @@ public class AddStudent extends AppCompatActivity implements DatePickerDialog.On
                         eventFee.getText().toString(),
                         eventPayment.getText().toString(),
                         eventPrize.getText().toString(),
-                        eventDescription.getText().toString()
+                        eventDescription.getText().toString(),
+                        downloadUrl
                         )){
-                    ProgressDialog.dismiss();
                     return;
                 }
 
@@ -240,10 +294,12 @@ public class AddStudent extends AppCompatActivity implements DatePickerDialog.On
                 event.put("eventdate",currentDateString);
                 event.put("eventtime",timings);
                 event.put("bannerUrl",downloadUrl);
-
-
+                event.put("userId", FirebaseHelper.getUser().getUid());
+                ProgressDialog.show(AddStudent.this);
                 mAuth = FirebaseAuth.getInstance();
-                mFirestore.collection("users/"+ mAuth.getCurrentUser().getUid()+"/events").document().set(event).addOnFailureListener(new OnFailureListener() {
+                String eventId = mFirestore.collection("events").document().getId();
+                event.put("eventId",eventId);
+                mFirestore.collection("events").document(eventId).set(event).addOnFailureListener(new OnFailureListener() {
 
                     @Override
                     public void onFailure(@NonNull Exception e) {
@@ -256,6 +312,8 @@ public class AddStudent extends AppCompatActivity implements DatePickerDialog.On
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        ProgressDialog.dismiss();
+                        setResult(RESULT_OK);
                         finish();
                     }
                 });
@@ -430,7 +488,8 @@ public class AddStudent extends AppCompatActivity implements DatePickerDialog.On
                                String eventfee,
                                String eventpayment,
                                String eventprize,
-                               String eventdescription
+                               String eventdescription,
+                               String downloadUrl
                                ) {
         if(name.isEmpty()&&phone.isEmpty()&&id.isEmpty()&&email.isEmpty()&&eventname.isEmpty()&&eventvenue.isEmpty()&&eventfee.isEmpty()&&eventpayment.isEmpty()&&eventprize.isEmpty()&&eventdescription.isEmpty()){
             Snackbar.make(v,"Fields should not be empty",Snackbar.LENGTH_LONG).setAction("Action",null).show();
@@ -493,6 +552,11 @@ public class AddStudent extends AppCompatActivity implements DatePickerDialog.On
             Snackbar.make(v,"Description is Required",Snackbar.LENGTH_LONG).setAction("Action",null).show();
             return false;
         }
+        if(uri == null){
+            Snackbar.make(v,"Image is Required",Snackbar.LENGTH_LONG).setAction("Action",null).show();
+            return false;
+        }
+
         return true;
     }
 

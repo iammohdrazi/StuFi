@@ -21,22 +21,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.zaph.loginsignupdesign.R;
 import com.zaph.loginsignupdesign.api.ApiClient;
 import com.zaph.loginsignupdesign.firebase.FirebaseHelper;
 import com.zaph.loginsignupdesign.models.Event;
-import com.zaph.loginsignupdesign.api.ApiInterface;
 import com.zaph.loginsignupdesign.models.Student;
-import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.zaph.loginsignupdesign.ui.AddStudent;
 import com.zaph.loginsignupdesign.ui.DatabaseHelperClass;
 import com.zaph.loginsignupdesign.ui.MainAdapter;
-import com.zaph.loginsignupdesign.utils.ProgressDialog;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,23 +42,18 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.app.Activity.RESULT_OK;
 
 
 public class StudentsFragment extends Fragment {
 
-
-    private ArrayList<Student> phoneList = new ArrayList();
     private ArrayList<Event> eventList = new ArrayList();
     private MainAdapter mainAdapter;
     private RecyclerView recyclerView;
     private FloatingActionButton fab;
     private ImageView studentEditor;
     private DatabaseHelperClass myDb;
-    private Dialog myDialog;
     private TextView txtClose;
     private TextView studentName;
     private TextView studentId;
@@ -74,11 +66,12 @@ public class StudentsFragment extends Fragment {
     private ImageView studentPopupCall;
     private ImageView studentPopupMessage;
     private ImageView studentPopupEmail;
-    private BottomAppBar bottomAppBar;
-    private ActionBarDrawerToggle actionBarDrawerToggle;
 
     private LottieAnimationView noData;
     private TextView noStudents;
+
+    private ShimmerFrameLayout shimmerFrameLayout;
+    private Dialog myDialog;
 
     private FirebaseFirestore mFirestore;
     private static final String FIRE_LOG = "Fire_log";
@@ -90,12 +83,16 @@ public class StudentsFragment extends Fragment {
 
         //getSupportActionBar().setTitle("Students");
 
+        shimmerFrameLayout = root.findViewById(R.id.maineventshimmer);
         recyclerView = (RecyclerView) root.findViewById(R.id.recyclerView);
         myDb = new DatabaseHelperClass(getActivity()); // dataBase constructor is calling here
         setUpRecycler(root);
-        getEvents();
         noData = root.findViewById(R.id.noStudents);
         noStudents = root.findViewById(R.id.textNoStudentsAdded);
+
+        noData.setVisibility(View.GONE);
+        noStudents.setVisibility(View.GONE);
+        getEvents();
         checkIfEmpty();
         return root;
     }
@@ -124,11 +121,12 @@ public class StudentsFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == 101) {
             if (resultCode == RESULT_OK) {
                getEvents();
             }
-        } else if (requestCode == 202) {
+        }else if (requestCode == 207) {
             if (resultCode == RESULT_OK) {
                 getEvents();
             }
@@ -136,7 +134,7 @@ public class StudentsFragment extends Fragment {
     }
 
 
-    public void showPopup(String name, String id, final String phone, String gender, final String email, String branch, String year) {
+    public void showDetails(String name, String id, final String phone, String gender, final String email, String branch, String year) {
         myDialog = new Dialog(getActivity());
         myDialog.setContentView(R.layout.custompopup);
 
@@ -221,8 +219,8 @@ public class StudentsFragment extends Fragment {
 
         if (eventList.size() > 0) {
             recyclerView.setVisibility(View.VISIBLE);
-            noData.setVisibility(View.GONE);
             noStudents.setVisibility(View.GONE);
+            noData.setVisibility(View.GONE);
         } else {
             recyclerView.setVisibility(View.GONE);
             noData.setVisibility(View.VISIBLE);
@@ -233,8 +231,7 @@ public class StudentsFragment extends Fragment {
 
 
     private void getEvents() {
-
-        ProgressDialog.show(getActivity());
+        shimmerFrameLayout.startShimmer();
         HashMap<String, String> map = new HashMap<>();
         map.put("userId", FirebaseHelper.getUser().getUid());
 
@@ -245,14 +242,16 @@ public class StudentsFragment extends Fragment {
                     eventList = (ArrayList<Event>) response.body();
                     Log.i("DATA", eventList + "");
                     mainAdapter.setData(eventList);
-                    ProgressDialog.dismiss();
+                    shimmerFrameLayout.stopShimmer();
+                    shimmerFrameLayout.setVisibility(View.GONE);
                     checkIfEmpty();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Event>> call, Throwable t) {
-                ProgressDialog.dismiss();
+                shimmerFrameLayout.stopShimmer();
+                shimmerFrameLayout.setVisibility(View.GONE);
             }
         });
     }

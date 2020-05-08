@@ -17,8 +17,13 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.zaph.loginsignupdesign.firebase.FirebaseHelper;
 import com.zaph.loginsignupdesign.utils.ProgressDialog;
 import com.zaph.loginsignupdesign.R;
+
+import java.util.HashMap;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -112,6 +117,27 @@ public class SignupActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
+                       saveToDb();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
+
+    }
+
+    private void saveToDb(){
+
+        HashMap<String, String > map = new HashMap<>();
+        map.put("userId",FirebaseHelper.getUser().getUid());
+        map.put("name",etName.getText().toString());
+        map.put("email",etemail.getText().toString());
+        FirebaseHelper.getDbRef().collection("users").document(FirebaseHelper.getUser().getUid()).set(map)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
                         Intent intent = new Intent(SignupActivity.this,MainActivity.class);
                         startActivity(intent);
                         Toast.makeText(SignupActivity.this,"Sign UP Successful",Toast.LENGTH_SHORT).show();

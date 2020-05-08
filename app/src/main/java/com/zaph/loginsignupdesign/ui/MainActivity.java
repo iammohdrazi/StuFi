@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (item.getItemId()){
             case R.id.nav_students:
                     drawer.closeDrawer(Gravity.LEFT);
-                toolbarHeading.setText("Students");
+                toolbarHeading.setText("Events");
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.llContainer, new StudentsFragment())
                             .commit();

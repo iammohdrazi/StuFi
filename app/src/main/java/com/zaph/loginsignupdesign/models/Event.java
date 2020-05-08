@@ -21,6 +21,8 @@ public class Event implements Serializable {
     private String eventdescription;
     private String eventdate;
     private String eventtime;
+    private String bannerUrl;
+    private String eventId;
 
 
     public String getHostname() {
@@ -89,5 +91,12 @@ public class Event implements Serializable {
 
     public String getEventtime() {
         return eventtime;
+    }
+    public String getBannerUrl() {
+        return bannerUrl;
+    }
+
+    public String getEventId() {
+        return eventId;
     }
 }
