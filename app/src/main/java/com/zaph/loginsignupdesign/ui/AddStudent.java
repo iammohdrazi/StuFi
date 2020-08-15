@@ -113,7 +113,7 @@ public class AddStudent extends AppCompatActivity implements DatePickerDialog.On
 
     private String[] availableBranches = {" Course "," Other "," PH.D (CE) "," PH.D (ECE) ", " PH.D (ME) ", " PH.D (CSE) "," M.Tech (CSE) "," M.Tech (CE) "," M.Tech (ECE) "," B.Tech (CSE) "," B.Tech (CE) "," B.Tech (ME) "," B.Tech (EEE) "," B.Tech (ECE) "," B.Tech (LEET) "};
     private String[] yearOfCourse = {" Year "," N/A"," 5th Year ", " 4th Year ", " 3rd Year ", " 2nd Year ", " 1st Year "};
-    private String[] eventCategory = {" Event Category "," Adventure "," Educational "," Singing "," Trivia "," Dance "," Games "," Debate "," Seminar "," Sports "," Fest "," Fresher "," Convocation "," Prizes "," Festival "," Other "};
+    private String[] eventCategory = {" Event Category ","Adventure","Educational","Singing","Trivia","Dance","Games","Debate","Seminar","Sports","Fest","Fresher","Convocation","Prizes","Festival","Other"};
     private String[] joining = {" Joining Criteria "," Students Only "," Teachers Only "," All "," Other "};
 
     private Spinner hostBranch;
@@ -142,6 +142,7 @@ public class AddStudent extends AppCompatActivity implements DatePickerDialog.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_add_student);
 
         myDb = new DatabaseHelperClass(this); // dataBase constructor is calling here
@@ -158,42 +159,6 @@ public class AddStudent extends AppCompatActivity implements DatePickerDialog.On
         eventPrize = findViewById(R.id.eteventprize);
         eventDescription = findViewById(R.id.eteventdescription);
         eventImage = findViewById(R.id.eteventimage);
-
-        titlepage = findViewById(R.id.titlepage);
-        tv1 = findViewById(R.id.tvhostname);
-        tv2 = findViewById(R.id.tvhostphone);
-        tv3 = findViewById(R.id.tvhostgender);
-        tv4 = findViewById(R.id.tvhostid);
-        tv5 = findViewById(R.id.tvhostemail);
-        tv6 = findViewById(R.id.tveventname);
-        tv7 = findViewById(R.id.tvvenue);
-        tv8 = findViewById(R.id.tveventfee);
-        tv9 = findViewById(R.id.tvpayment);
-        tv10 = findViewById(R.id.tvdateselector);
-        tv11 = findViewById(R.id.tvtimeselector);
-        tv12 = findViewById(R.id.tveventprize);
-        tv13 = findViewById(R.id.tveventdescription);
-        tv14 = findViewById(R.id.tveventimage);
-
-        //import Font
-        Typeface MLight = Typeface.createFromAsset(getAssets(),"fonts/regular.ttf");
-        Typeface MMedium = Typeface.createFromAsset(getAssets(),"fonts/light.ttf");
-
-        titlepage.setTypeface(MMedium);
-        tv1.setTypeface(MLight);
-        tv2.setTypeface(MLight);
-        tv3.setTypeface(MLight);
-        tv4.setTypeface(MLight);
-        tv5.setTypeface(MLight);
-        tv6.setTypeface(MLight);
-        tv7.setTypeface(MLight);
-        tv8.setTypeface(MLight);
-        tv9.setTypeface(MLight);
-        tv10.setTypeface(MLight);
-        tv11.setTypeface(MLight);
-        tv12.setTypeface(MLight);
-        tv13.setTypeface(MLight);
-        tv14.setTypeface(MLight);
 
         hostBranch = (Spinner) findViewById(R.id.neweventspinnerbranch);
         hostYear = (Spinner) findViewById(R.id.neweventspinneryear);

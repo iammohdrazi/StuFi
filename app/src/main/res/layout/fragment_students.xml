@@ -26,13 +26,12 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/noStudents"
-            android:layout_width="360dp"
-            android:layout_height="460dp"
+            android:layout_width="260dp"
+            android:layout_height="360dp"
             app:lottie_fileName="emptyLost.json"
             app:lottie_loop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="60dp"
             app:lottie_autoPlay="true"
+            android:layout_margin="26dp"
             android:scaleType="centerCrop"
             android:visibility="gone"
             />
@@ -43,7 +42,7 @@
             android:layout_height="wrap_content"
             android:text="No Event Added !\nClick '+' button to add one."
             android:textSize="20dp"
-            android:textAlignment="center"
+            android:gravity="center_horizontal"
             android:textStyle="bold"
             android:fontFamily="sans-serif-smallcaps"
             android:textColor="@color/black"
@@ -86,11 +85,12 @@
             android:layout_marginLeft="16dp"
             android:layout_margin="12dp"
             app:shimmer_duration="800"
+            android:visibility="gone"
             >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="667dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <include layout="@layout/shimmermain" />
@@ -102,12 +102,6 @@
                     app:cardBackgroundColor="#BBBB"
                     app:cardCornerRadius="8dp" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="225dp"
-                    android:layout_marginTop="10dp"
-                    app:cardBackgroundColor="#BBBB"
-                    app:cardCornerRadius="8dp" />
             </LinearLayout>
 
         </com.facebook.shimmer.ShimmerFrameLayout>

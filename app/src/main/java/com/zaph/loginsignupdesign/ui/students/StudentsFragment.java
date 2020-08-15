@@ -221,16 +221,18 @@ public class StudentsFragment extends Fragment {
             recyclerView.setVisibility(View.VISIBLE);
             noStudents.setVisibility(View.GONE);
             noData.setVisibility(View.GONE);
-        } else {
-            recyclerView.setVisibility(View.GONE);
-            noData.setVisibility(View.VISIBLE);
-            noStudents.setVisibility(View.VISIBLE);
         }
-
+        if(eventList.size() == 0){
+            recyclerView.setVisibility(View.GONE);
+            noStudents.setVisibility(View.VISIBLE);
+            noData.setVisibility(View.VISIBLE);
+            shimmerFrameLayout.startShimmer();
+        }
     }
 
 
     private void getEvents() {
+        shimmerFrameLayout.setVisibility(View.VISIBLE);
         shimmerFrameLayout.startShimmer();
         HashMap<String, String> map = new HashMap<>();
         map.put("userId", FirebaseHelper.getUser().getUid());

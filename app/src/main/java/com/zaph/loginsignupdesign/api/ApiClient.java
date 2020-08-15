@@ -5,7 +5,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiClient {
+public class
+ApiClient {
 
     private final static String BASE_URL = "https://us-central1-jibble-ffd5f.cloudfunctions.net/";
     private static OkHttpClient.Builder httpClient=new OkHttpClient.Builder();
