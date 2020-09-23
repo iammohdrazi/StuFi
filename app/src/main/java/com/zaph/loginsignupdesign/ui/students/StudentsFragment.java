@@ -22,7 +22,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.zaph.loginsignupdesign.R;
 import com.zaph.loginsignupdesign.api.ApiClient;
 import com.zaph.loginsignupdesign.firebase.FirebaseHelper;
@@ -90,10 +101,7 @@ public class StudentsFragment extends Fragment {
         noData = root.findViewById(R.id.noStudents);
         noStudents = root.findViewById(R.id.textNoStudentsAdded);
 
-        noData.setVisibility(View.GONE);
-        noStudents.setVisibility(View.GONE);
         getEvents();
-        checkIfEmpty();
         return root;
     }
 
@@ -217,6 +225,9 @@ public class StudentsFragment extends Fragment {
 
     private void checkIfEmpty() {
 
+        noStudents.setVisibility(View.GONE);
+        noData.setVisibility(View.GONE);
+
         if (eventList.size() > 0) {
             recyclerView.setVisibility(View.VISIBLE);
             noStudents.setVisibility(View.GONE);
@@ -234,9 +245,25 @@ public class StudentsFragment extends Fragment {
     private void getEvents() {
         shimmerFrameLayout.setVisibility(View.VISIBLE);
         shimmerFrameLayout.startShimmer();
+
+        /*CollectionReference allEvents = FirebaseHelper.getDbRef().collection("events");
+        allEvents.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for (QueryDocumentSnapshot documentSnapshot :queryDocumentSnapshots){
+                            Log.d("EVENTS", String.valueOf(documentSnapshot));
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });*/
+
         HashMap<String, String> map = new HashMap<>();
         map.put("userId", FirebaseHelper.getUser().getUid());
-
         ApiClient.getClient().getEventByUser(map).enqueue(new Callback<List<Event>>() {
             @Override
             public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {

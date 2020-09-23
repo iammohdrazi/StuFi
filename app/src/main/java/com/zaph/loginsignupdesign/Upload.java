@@ -1,6 +1,5 @@
 package com.zaph.loginsignupdesign;
 
-import java.security.SecureRandom;
 
 public class Upload {
     private String mName;

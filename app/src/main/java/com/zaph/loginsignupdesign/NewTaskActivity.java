@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -100,25 +99,6 @@ public class NewTaskActivity extends AppCompatActivity {
                                 ProgressDialog.dismiss();
                             }
                         });
-
-
-               /* reference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                        dataSnapshot.getRef().child("titledoes").setValue(titleDoes.getText().toString());
-                        dataSnapshot.getRef().child("descdoes").setValue(etdesc.getText().toString());
-                        dataSnapshot.getRef().child("datedoes").setValue(ettime.getText().toString());
-                        dataSnapshot.getRef().child("keydoes").setValue(keydoes);
-
-                        finish();
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Toast.makeText(NewTaskActivity.this, "Check Your NetWork Connection!", Toast.LENGTH_SHORT).show();
-                    }
-                });*/
 
             }
         });
